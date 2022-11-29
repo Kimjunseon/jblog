@@ -1,0 +1,5 @@
+create database jblog;
+
+create user 'jblog'@'localhost' identified by 'jblog';
+grant all privileges on jblog.* to 'jblog'@'localhost';
+flush privileges;
