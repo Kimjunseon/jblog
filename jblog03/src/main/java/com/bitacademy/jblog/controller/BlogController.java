@@ -44,6 +44,8 @@ public class BlogController {
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String login() {
 		return "blog/admin-basic";
+		
+		
 	}
 	
 }
