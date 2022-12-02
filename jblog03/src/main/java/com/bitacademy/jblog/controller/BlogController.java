@@ -2,10 +2,16 @@ package com.bitacademy.jblog.controller;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bitacademy.jblog.service.BlogService;
+import com.bitacademy.jblog.vo.BlogVo;
 
 @Controller
 /**
@@ -15,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @RequestMapping("/{id:(?!assets).*}")
 public class BlogController {
+	@Autowired
+	private BlogService blogService;
 	
 	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}"})
 	public String index(
@@ -35,16 +43,32 @@ public class BlogController {
 		return "blog/index";
 	}
 	
-	@RequestMapping({"/admin","/admin/basic"})
+	@RequestMapping(value={"/admin","/admin/basic"}, method=RequestMethod.GET)
 	public String adminBasic(@PathVariable("id") String id) {
+		System.out.println("dd" + id);
 		return "blog/admin-basic";
 		
 	}
 	
-	@RequestMapping(value="/write", method=RequestMethod.GET)
-	public String login() {
-		return "blog/admin-basic";
+	@RequestMapping(value={"/admin","/admin/basic"}, method=RequestMethod.POST)
+	public String adminBasic(@ModelAttribute BlogVo blogVo, Model model) {
+		blogService.changeByTitleAndProfile(blogVo);
+		blogVo.setTitle(blogVo.getTitle());
+		System.out.println("dd" + blogVo);
+		return "redirect:/blog";
 		
+	}
+	
+	
+	@RequestMapping(value="/write", method=RequestMethod.GET)
+	public String write() {
+		return "blog/admin-write";
+		
+	}
+	
+	@RequestMapping(value="/category", method=RequestMethod.GET)
+	public String login() {
+		return "blog/admin-category";
 		
 	}
 	
