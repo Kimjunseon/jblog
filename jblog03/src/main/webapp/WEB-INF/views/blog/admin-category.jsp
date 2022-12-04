@@ -58,15 +58,16 @@
 				</table>
       	
       			<h4 class="n-c">새로운 카테고리 추가</h4>
-      			<form action="${pageContext.request.contextPath }/blog/category/add">
+      			<form action="${pageContext.request.contextPath }/blog/category/add" method="post">
+      			<input type="hidden" name="id" value="${authUser.id }">
 		      	<table id="admin-cat-add">
 		      		<tr>
 		      			<td class="t">카테고리명</td>
-		      			<td><input type="text"></td>
+		      			<td><input type="text" name="title"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="t">설명</td>
-		      			<td><input type="text"></td>
+		      			<td><input type="text" name="desc"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="s">&nbsp;</td>
@@ -78,7 +79,7 @@
 		</div>
 		<div id="footer">
 			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2016
+				<strong>Spring 이야기</strong> is powered by JBlog (c)2022
 			</p>
 		</div>
 	</div>

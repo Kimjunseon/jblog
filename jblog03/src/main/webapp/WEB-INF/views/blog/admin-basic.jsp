@@ -23,8 +23,8 @@
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
 					<li class="selected">기본설정</li>
-					<li><a href="${pageContext.request.contextPath }/blog/category">카테고리</a></li>
-					<li><a href="${pageContext.request.contextPath }/blog/write">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath }/blog/admin/category">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath }/blog/admin/write">글작성</a></li>
 				</ul>
 				<form action="${pageContext.request.contextPath }/blog/admin" method="post">
 	 		      	<table class="admin-config">
