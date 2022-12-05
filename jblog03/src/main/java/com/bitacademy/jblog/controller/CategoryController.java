@@ -12,7 +12,7 @@ import com.bitacademy.jblog.vo.CategoryVo;
 
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/admin")
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
