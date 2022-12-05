@@ -60,13 +60,13 @@ public class BlogController {
 	}
 	
 	
-	@RequestMapping(value="/write", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/write", method=RequestMethod.GET)
 	public String write() {
 		return "blog/admin-write";
 		
 	}
 	
-	@RequestMapping(value="/category", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/category", method=RequestMethod.GET)
 	public String login() {
 		return "blog/admin-category";
 		
