@@ -24,7 +24,7 @@
 				<ul class="admin-menu">
 					<li class="selected">기본설정</li>
 					<li><a href="${pageContext.request.contextPath }/${id }/admin/category">카테고리</a></li>
-					<li><a href="${pageContext.request.contextPath }/blog/write">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath }/${id }/admin/write">글작성</a></li>
 				</ul>
 		      	<table class="admin-cat">
 		      		<tr>
