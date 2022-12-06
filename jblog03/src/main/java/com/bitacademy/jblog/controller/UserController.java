@@ -29,7 +29,7 @@ public class UserController {
 			UserVo userVo, BlogVo blogVo) {
 		userService.join(userVo);
 		blogService.joinBlogInsert(blogVo);
-		return "redirect:/user/joinsuccess";
+		return "redirect:/user/joinsuccess"; 
 	}
 	
 	@RequestMapping("/joinsuccess")
