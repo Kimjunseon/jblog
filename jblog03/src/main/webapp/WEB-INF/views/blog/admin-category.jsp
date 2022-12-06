@@ -16,15 +16,15 @@
 			<ul>
 				<li><a href="${pageContext.request.contextPath }/user/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath }/${id }/admin">블로그 관리</a></li>
+				<li><a href="${pageContext.request.contextPath }/${authUser.id }/admin">블로그 관리</a></li>
 			</ul>
 		</div>
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
 					<li class="selected">기본설정</li>
-					<li><a href="${pageContext.request.contextPath }/${id }/admin/category">카테고리</a></li>
-					<li><a href="${pageContext.request.contextPath }/${id }/admin/write">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath }/${authUser.id }/admin/category">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath }/${authUser.id }/admin/write">글작성</a></li>
 				</ul>
 		      	<table class="admin-cat">
 		      		<tr>
@@ -58,7 +58,7 @@
 				</table>
       	
       			<h4 class="n-c">새로운 카테고리 추가</h4>
-      			<form action="${pageContext.request.contextPath }/blog/category/add" method="post">
+      			<form action="${pageContext.request.contextPath }/${authUser.id }/admin/category/add" method="post">
       			<input type="hidden" name="id" value="${authUser.id }">
 		      	<table id="admin-cat-add">
 		      		<tr>
