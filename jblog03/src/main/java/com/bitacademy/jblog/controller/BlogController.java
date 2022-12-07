@@ -45,7 +45,6 @@ public class BlogController {
 	
 	@RequestMapping(value={"/admin","/admin/basic"}, method=RequestMethod.GET)
 	public String adminBasic(@PathVariable("id") String id) {
-		System.out.println("dd" + id);
 		return "blog/admin-basic";
 		
 	}
@@ -54,8 +53,7 @@ public class BlogController {
 	public String adminBasic(@ModelAttribute BlogVo blogVo, Model model) {
 		blogService.changeByTitleAndProfile(blogVo);
 		blogVo.setTitle(blogVo.getTitle());
-		System.out.println("dd" + blogVo);
-		return "redirect:/blog";
+		return "blog/index";
 		
 	}
 	

@@ -1,11 +1,13 @@
 package com.bitacademy.jblog.controller;
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.vo.CategoryVo;
@@ -17,22 +19,18 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping({"","/list"})
-	public String index() {
+	@RequestMapping("")
+	public String categoryIndex(Model model) {
+		Map<String> map = categoryService.getContentsList();
+		model.addAttribute("map", map);
 		return "blog/admin-category";
 	}
 	
-	
-	
-	@RequestMapping(value="/add")
+	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String add(CategoryVo categoryVo) {
-		System.out.println("--" + categoryVo);
 		categoryService.addCategory(categoryVo);
-		return "redirect:/category";
+		return "redirect:/"+categoryVo.getId()+"/admin/category";
 		
 	}
-	
-	
-	
 	
 }
