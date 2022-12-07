@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.vo.CategoryVo;
@@ -20,9 +21,11 @@ public class CategoryController {
 	private CategoryService categoryService;
 	
 	@RequestMapping("")
-	public String categoryIndex(Model model) {
-		Map<String> map = categoryService.getContentsList();
+	public String categoryIndex(@RequestParam("no") Long no , Model model) {
+		Map<String, Object> map = categoryService.getCategoryList(no);
 		model.addAttribute("map", map);
+		System.out.println("no: " + no);
+		System.out.println("map: " + map);
 		return "blog/admin-category";
 	}
 	
