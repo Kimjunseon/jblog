@@ -33,7 +33,7 @@
 		      			<th>포스트 수</th>
 		      			<th>설명</th>
 		      			<th>삭제</th>
-		      			<th>&nbsp;</th>      			
+		      	     			
 		      		</tr>
 		      		<c:forEach items="${map.list }"	var="vo" varStatus="status">
 		      			<tr>
