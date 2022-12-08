@@ -11,4 +11,9 @@ select * from category;
 select * from post;
 
 
+delete from blog;
 
+select no, title, descr
+  from category
+  order by no desc;
+		
