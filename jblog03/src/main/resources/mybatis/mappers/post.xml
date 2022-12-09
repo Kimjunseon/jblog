@@ -3,7 +3,7 @@
 <mapper namespace="post">
 	<insert id="insert" parameterType="postvo">
 	<![CDATA[
-	insert into post values (null, '', '', now(), 1)
+	insert into post values (null, #{title }, #{contents }, now(), 1)
 	]]>
 	</insert>	
 

@@ -23,5 +23,10 @@ public class CategoryRepository {
 		return sqlSession.selectList("category.categoryList");
 	}
 
+	public Boolean delete(String title) {
+		return sqlSession.selectOne("category.delete", title);
+		
+	}
+
 
 }

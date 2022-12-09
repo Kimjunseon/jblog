@@ -23,5 +23,10 @@ public class CategoryService {
 		return categoryRepository.categoryList();
 	}
 
+	public void deleteCategory(String title) {
+		categoryRepository.delete(title);
+		
+	}
+
 
 }
