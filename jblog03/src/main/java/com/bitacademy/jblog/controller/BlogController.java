@@ -4,14 +4,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bitacademy.jblog.service.BlogService;
+import com.bitacademy.jblog.service.FileUploadService;
 import com.bitacademy.jblog.vo.BlogVo;
+import com.bitacademy.jblog.vo.CategoryVo;
 
 @Controller
 /**
@@ -23,6 +25,9 @@ import com.bitacademy.jblog.vo.BlogVo;
 public class BlogController {
 	@Autowired
 	private BlogService blogService;
+	
+	@Autowired
+	private FileUploadService fileuploadService;
 	
 	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}"})
 	public String index(
@@ -49,12 +54,21 @@ public class BlogController {
 		
 	}
 	
-	@RequestMapping(value={"/admin","/admin/basic"}, method=RequestMethod.POST)
-	public String adminBasic(@ModelAttribute BlogVo blogVo, Model model) {
-		blogService.changeByTitleAndProfile(blogVo);
-		blogVo.setTitle(blogVo.getTitle());
-		return "blog/index";
+	@RequestMapping(value="/admin/update")
+	public String changeTitleAndProfile(
+			BlogVo blogVo,
+			CategoryVo categoryVo,
+			@RequestParam(value="file") MultipartFile multipartFile) {
 		
+		System.out.println("fi: " + multipartFile);
+		
+		String url = fileuploadService.restore(multipartFile);
+		
+		blogVo.setProfile(url);
+				
+		blogService.changeByTitleAndProfile(blogVo);
+		
+		return "redirect:/" + categoryVo.getId();
 	}
 	
 	

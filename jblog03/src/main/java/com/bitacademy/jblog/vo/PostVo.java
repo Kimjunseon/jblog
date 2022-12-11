@@ -7,7 +7,7 @@ public class PostVo {
 	private String regDate;
 	private Long categoryNo;
 	
-	public Long getNo() {
+	public Long getNo() { 
 		return no;
 	}
 	
