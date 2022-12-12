@@ -1,4 +1,4 @@
-package com.bitacademy.jblog.controller; 
+package com.bitacademy.jblog.controller;  
 
 import java.util.Optional;
 
