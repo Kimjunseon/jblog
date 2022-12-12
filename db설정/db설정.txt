@@ -6,3 +6,10 @@ flush privileges;
 
 DB mwb - jblog
 DB sql - jblog-sql
+
+join 설정
+select a.name, b.title, b.profile, c.title, c.no, d.title, d.contents, d.reg_date, d.no
+  from user a, blog b, category c, post d
+ where b.id = a.id
+   and c.id = b.id
+   and d.catagory_no = c.no;
