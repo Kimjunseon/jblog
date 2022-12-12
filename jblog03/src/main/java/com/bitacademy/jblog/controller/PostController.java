@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.service.PostService;
@@ -28,10 +29,15 @@ public class PostController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String add(PostVo postVo, UserVo userVo) {
+	public String add(@RequestParam("vo.title") String title,
+					  PostVo postVo,
+					  UserVo userVo) {
+		System.out.println("ti: "+title);
+		CategoryVo categoryVo = categoryService.findCategoryNo(title);
+		System.out.println("CV: "+categoryVo);
+		postVo.setCategoryNo(categoryVo.getNo());
 		postService.addPost(postVo);
-		System.out.println(postVo);
-		return "redirect:/"+userVo.getId()+"";
+		return "redirect:/"+userVo.getId()+""; 
 	}
 	
 }

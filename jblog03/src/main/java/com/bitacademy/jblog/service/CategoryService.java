@@ -28,5 +28,10 @@ public class CategoryService {
 		
 	}
 
+	public CategoryVo findCategoryNo(String title) {
+		CategoryVo categoryVo = categoryRepository.findNo(title);
+		return categoryVo;
+	}
+
 
 }

@@ -22,4 +22,12 @@
 	]]>
 	</delete>
 	
+	<select id="findNo" parameterType="string" resultType="categoryvo">
+		<![CDATA[
+		select	no, title, descr, id
+		   from category
+		  where title = #{title }		
+		]]>		
+	</select>
+	
 </mapper>
