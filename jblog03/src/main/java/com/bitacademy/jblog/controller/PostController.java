@@ -32,9 +32,7 @@ public class PostController {
 	public String add(@RequestParam("vo.title") String title,
 					  PostVo postVo,
 					  UserVo userVo) {
-		System.out.println("ti: "+title);
 		CategoryVo categoryVo = categoryService.findCategoryNo(title);
-		System.out.println("CV: "+categoryVo);
 		postVo.setCategoryNo(categoryVo.getNo());
 		postService.addPost(postVo);
 		return "redirect:/"+userVo.getId()+""; 

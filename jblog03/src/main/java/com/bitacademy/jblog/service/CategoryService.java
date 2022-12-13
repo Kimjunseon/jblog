@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitacademy.jblog.repository.CategoryRepository;
 import com.bitacademy.jblog.vo.CategoryVo;
+import com.bitacademy.jblog.vo.UserVo;
 
 @Service
 public class CategoryService {
@@ -32,6 +33,7 @@ public class CategoryService {
 		CategoryVo categoryVo = categoryRepository.findNo(title);
 		return categoryVo;
 	}
+
 
 
 }

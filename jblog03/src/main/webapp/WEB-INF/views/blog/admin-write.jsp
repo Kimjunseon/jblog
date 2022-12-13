@@ -12,7 +12,8 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>${authUser.name }님의 블로그입니다.</h1>
+			<input type="hidden" name="title" value="${blogVo.title }">
+			<h1>${blogVo.title }</h1>
 			<ul>
 				<li><a href="${pageContext.request.contextPath }/user/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>
@@ -34,7 +35,9 @@
 			      				<input type="text" size="60" name="title">
 				      			<select name="vo.title">
 				      				<c:forEach items="${list }"	var="vo" varStatus="status">
+				      				<c:if test="${vo.id eq authUser.id  }">
 				      					<option>${vo.title }</option>
+				      				</c:if>
 				      				</c:forEach>
 				      			</select>
 				      		</td>

@@ -3,8 +3,9 @@
 <mapper namespace="category">
 		<select id="categoryList" resultType="categoryvo">
 				<![CDATA[
-				  select no, title, descr
+				  select no, title, descr, id
 					from category
+				   
 			    order by no desc
 				]]>
 		</select>
