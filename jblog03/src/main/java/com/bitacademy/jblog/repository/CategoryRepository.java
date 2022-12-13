@@ -28,5 +28,10 @@ public class CategoryRepository {
 		
 	}
 
+	public CategoryVo findNo(String title) {
+		CategoryVo vo = sqlSession.selectOne("category.findNo", title);
+		return vo;
+	}
+
 
 }

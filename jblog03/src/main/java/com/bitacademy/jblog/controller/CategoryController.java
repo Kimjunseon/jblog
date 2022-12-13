@@ -1,8 +1,6 @@
 package com.bitacademy.jblog.controller;
 
 
-import java.util.List; 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.vo.CategoryVo;
+import com.bitacademy.jblog.vo.UserVo;
 
 
 @Controller
@@ -21,14 +20,15 @@ public class CategoryController {
 	private CategoryService categoryService;
 	
 	@RequestMapping("")
-	public String categoryIndex(Model model) {
+	public String categoryIndex(UserVo userVo, Model model) {
 		model.addAttribute("list", categoryService.getCategoryList());
-		System.out.println("model: " + model);
+		System.out.println(model);
 		return "blog/admin-category";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String add(CategoryVo categoryVo) {
+		System.out.println(categoryVo);
 		categoryService.addCategory(categoryVo);
 		return "redirect:/"+categoryVo.getId()+"/admin/category";
 		
