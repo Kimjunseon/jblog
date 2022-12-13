@@ -34,6 +34,11 @@ public class CategoryService {
 		return categoryVo;
 	}
 
+	public void joinCategoryInsert(CategoryVo categoryVo) {
+		categoryRepository.insertCategory(categoryVo);
+		
+	}
+
 
 
 }

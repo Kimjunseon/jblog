@@ -11,9 +11,9 @@
 		</select>
 
 	<insert id="insert" parameterType="categoryvo">
-	<![CDATA[
-	insert into category values (null, #{title }, #{descr }, #{id })
-	]]>
+		<![CDATA[
+			insert into category values (null, #{title }, #{descr }, #{id })
+		]]>
 	</insert>
 	
 	<delete id="delete" parameterType="string">
@@ -30,5 +30,11 @@
 		  where title = #{title }		
 		]]>		
 	</select>
+	
+	<insert id="insertCategory" parameterType="categoryvo">
+		<![CDATA[
+			insert into category values (null, '기본 카테고리', '기본 카테고리입니다.', #{id })
+		]]>
+	</insert>
 	
 </mapper>

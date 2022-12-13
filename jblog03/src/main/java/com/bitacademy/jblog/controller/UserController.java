@@ -1,13 +1,15 @@
 package com.bitacademy.jblog.controller;
 
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitacademy.jblog.service.BlogService;
+import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.service.UserService;
 import com.bitacademy.jblog.vo.BlogVo;
+import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.UserVo;
 
 @Controller
@@ -19,6 +21,9 @@ public class UserController {
 	@Autowired
 	private BlogService blogService;
 	
+	@Autowired
+	private CategoryService categoryService;
+	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String join() {
 		return "user/join";
@@ -26,9 +31,10 @@ public class UserController {
 
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(
-			UserVo userVo, BlogVo blogVo) {
+			UserVo userVo, BlogVo blogVo, CategoryVo categoryVo) {
 		userService.join(userVo);
 		blogService.joinBlogInsert(blogVo);
+		categoryService.joinCategoryInsert(categoryVo);
 		return "redirect:/user/joinsuccess"; 
 	}
 	

@@ -33,5 +33,10 @@ public class CategoryRepository {
 		return vo;
 	}
 
+	public Boolean insertCategory(CategoryVo categoryVo) {
+		int count = sqlSession.insert("category.insertCategory", categoryVo);
+		return count == 1;
+	}
+
 
 }
