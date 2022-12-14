@@ -11,8 +11,8 @@ public class PostRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public Boolean insert(PostVo postVo) {
-		int count = sqlSession.insert("post.insert", postVo);
+	public Boolean insertPost(PostVo postVo) {
+		int count = sqlSession.insert("post.insertPost", postVo);
 		return count == 1;
 	}
 

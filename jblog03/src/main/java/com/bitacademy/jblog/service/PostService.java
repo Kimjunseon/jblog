@@ -12,7 +12,7 @@ public class PostService {
 	private PostRepository postRepository;
 	
 	public void addPost(PostVo postVo) {
-		postRepository.insert(postVo);
+		postRepository.insertPost(postVo);
 		
 	}
 
