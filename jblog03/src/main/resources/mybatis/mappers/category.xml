@@ -5,7 +5,6 @@
 				<![CDATA[
 				  select no, title, descr, id
 					from category
-				   
 			    order by no desc
 				]]>
 		</select>

@@ -33,6 +33,7 @@ public class UserController {
 	public String join(
 			UserVo userVo, BlogVo blogVo, CategoryVo categoryVo) {
 		userService.join(userVo);
+		blogVo.setTitle(userVo.getName());
 		blogService.joinBlogInsert(blogVo);
 		categoryService.joinCategoryInsert(categoryVo);
 		return "redirect:/user/joinsuccess"; 

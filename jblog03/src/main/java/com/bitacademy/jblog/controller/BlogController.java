@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitacademy.jblog.service.BlogService;
-import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.service.FileUploadService;
 import com.bitacademy.jblog.service.UserService;
 import com.bitacademy.jblog.vo.BlogVo;
@@ -39,11 +38,18 @@ public class BlogController {
 	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}"})
 	public String index(
 		BlogVo blogVo,
-		// @RequestParam("authUser.id") String name,
+		UserVo userVo,
+		Model model,
 		@PathVariable("id") String id,
 		//Optional<> null값이 생성되지 않음
 		@PathVariable("pathNo1") Optional<Long> pathNo1,
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
+		
+		
+		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
+		System.out.println(blogVo2);
+		model.addAttribute("blogVo2", blogVo2);
+		
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
@@ -58,12 +64,15 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value={"/admin","/admin/basic"}, method=RequestMethod.GET)
-	public String adminBasic(@PathVariable("id") String id) {
+	public String adminBasic(@PathVariable("id") String id, UserVo userVo, Model model) {
+		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
+		System.out.println(blogVo2);
+		model.addAttribute("blogVo2", blogVo2);
 		return "blog/admin-basic";
 		
 	}
 	
-	@RequestMapping(value="/admin/update")
+	@RequestMapping(value="/admin/update", method=RequestMethod.POST)
 	public String changeTitleAndProfile(
 			BlogVo blogVo,
 			CategoryVo categoryVo,
@@ -73,4 +82,5 @@ public class BlogController {
 		blogService.changeByTitleAndProfile(blogVo);
 		return "redirect:/" + categoryVo.getId();
 	}
+	
 }

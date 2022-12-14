@@ -5,7 +5,7 @@
 		<![CDATA[
 		insert
 		  into blog
-		values (#{id }, '회원님의 사이트입니다.', '') 
+		values (#{id }, concat(#{title } , '회원님의 사이트입니다.'), '기본사진') 
 		]]>
 	</insert>
 	
@@ -16,4 +16,12 @@
 		 where id = #{id }
 		]]>			
 	</update>
+	
+	<select id="findBlog" parameterType="string" resultType="blogvo">
+		<![CDATA[
+		 select	id, title, profile
+		   from blog
+		  where id = #{id }		
+		]]>		
+	</select>
 </mapper>

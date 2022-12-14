@@ -19,6 +19,11 @@ public class BlogService {
 	public void changeByTitleAndProfile(BlogVo blogVo) {
 		blogRepository.update(blogVo);
 	}
+	
+	public BlogVo findBlog(String id) {
+		BlogVo blogVo2 = blogRepository.findBlog(id);
+		return blogVo2;
+	}
 
 
 }

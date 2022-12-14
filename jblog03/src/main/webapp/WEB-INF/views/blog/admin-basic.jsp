@@ -12,8 +12,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<input type="hidden" name="title" value="${blogVo.title }">
-			<h1>${blogVo.title }</h1>
+			<h1>${blogVo2.title }</h1>
 			<ul>
 				<li><a href="${pageContext.request.contextPath }/user/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>

@@ -20,6 +20,11 @@ public class BlogRepository {
 		int count = sqlSession.update("blog.update", blogvo);
 		return count == 1;
 	}
+
+	public BlogVo findBlog(String id) {
+		BlogVo vo = sqlSession.selectOne("blog.findBlog", id);
+		return vo;
+	}
 	
 	
 }
