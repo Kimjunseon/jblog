@@ -42,7 +42,7 @@
 							<c:if test="${vo.id eq authUser.id  }">
 	      					<td>[${count-status.index }]</td>
 		      				<td>${vo.title }</td>	
-		      				<td>넘버</td>
+		      				<td>${vo.postNo }</td>
 		      				<td>${vo.descr }</td>
 		      				<td>
 		      				<a href="${pageContext.request.contextPath }/${authUser.id }/admin/category/delete/${vo.title }" class="del"><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
