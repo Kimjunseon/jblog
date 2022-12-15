@@ -19,8 +19,8 @@ public class CategoryRepository {
 		
 	}
 
-	public List<CategoryVo> categoryList() {
-		return sqlSession.selectList("category.categoryList");
+	public List<CategoryVo> categoryList(String string) {
+		return sqlSession.selectList("category.categoryList", string);
 	}
 
 	public Boolean delete(String title) {

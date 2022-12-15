@@ -20,8 +20,8 @@ public class CategoryService {
 		
 	}
 
-	public List<CategoryVo> getCategoryList() {
-		return categoryRepository.categoryList();
+	public List<CategoryVo> getCategoryList(String string) {
+		return categoryRepository.categoryList(string);
 	}
 
 	public void deleteCategory(String title) {
@@ -38,7 +38,6 @@ public class CategoryService {
 		categoryRepository.insertCategory(categoryVo);
 		
 	}
-
 
 
 }

@@ -3,14 +3,14 @@
 <mapper namespace="category">
 		<select id="categoryList" resultType="categoryvo">
 				<![CDATA[
-					select a.id as id, c.title as title, c.descr as descr, count(d.category_no) as postNo
-                      from user a, blog b, category c
-                      left outer join post d
-	                    on d.category_no = c.id
-                     where b.id = a.id
-		               and c.id = b.id
-				  group by title
-		          order by c.no desc
+					select c.no, a.id as id, c.title as title, c.descr as descr, ifnull(postNo, 0) as postNo
+					  from user a, blog b, category c left outer join(select d.category_no, count(d.no) as postNo from post d group by d.category_no) as d
+						on d.category_no = c.no
+					 where b.id = a.id
+					   and c.id = b.id
+					   and a.id = #{id }
+	   			  group by c.no
+				  order by c.no desc
 				]]>
 		</select>
 

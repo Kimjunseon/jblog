@@ -33,10 +33,10 @@
 			      			<td class="t">제목</td>
 			      			<td>
 			      				<input type="text" size="60" name="title">
-				      			<select name="vo.title">
+				      			<select name="vo.no">
 				      				<c:forEach items="${list }"	var="vo" varStatus="status">
 				      				<c:if test="${vo.id eq authUser.id  }">
-				      					<option>${vo.title }</option>
+				      					<option value="${vo.no }">${vo.title }</option>
 				      				</c:if>
 				      				</c:forEach>
 				      			</select>

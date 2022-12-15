@@ -29,20 +29,18 @@ public class PostController {
 	
 	@RequestMapping("")
 	public String write(Model model, UserVo userVo) {
-		model.addAttribute("list", categoryService.getCategoryList());
+		model.addAttribute("list", categoryService.getCategoryList(userVo.getId()));
 		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
 		model.addAttribute("blogVo2", blogVo2);
 		return "blog/admin-write";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String add(@RequestParam("vo.title") String title,
-					  PostVo postVo,
-					  UserVo userVo) {
-		CategoryVo categoryVo = categoryService.findCategoryNo(title);
-		System.out.println(categoryVo);
-		postVo.setCategoryNo(categoryVo.getNo());
+	public String add(PostVo postVo,
+					  UserVo userVo,
+					  @RequestParam("vo.no") Long categoryNo){
 		System.out.println(postVo);
+		postVo.setCategoryNo(categoryNo);
 		postService.addPost(postVo);
 		return "redirect:/"+userVo.getId()+""; 
 	}
