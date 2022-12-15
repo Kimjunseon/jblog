@@ -9,6 +9,11 @@ select * from user;
 select * from blog;
 select * from category;
 select * from post;
+delete from post where no = 1;
+
+
+select no, title, descr, id from category
+group by title;
 
 insert into user
 values('new', 'hi', '123');
@@ -34,22 +39,39 @@ select no, title, descr, id
 				   where id = 'pingu'
 			    order by no desc;
                 
-select c.title, count(d.no), c.descr
+select c.title, c.descr, d.category_no
   from user a, blog b, category c, post d
  where b.id = a.id
    and c.id = b.id
-   and d.catagory_no = c.no
+   and d.category_no = c.no
 group by c.no = 1
 	 and a.id = 'test';
      
-     select count(d.no)
-       from user a, blog b, category c, post d
+     select c.no as no, c.title as title, c.descr as descr, count(d.no) as count
+       from user a, blog b, category c left outer join post d
+	     on d.category_no = c.id
       where b.id = a.id
 		and c.id = b.id
-        and d.category_no = c.no
-   group by a.id
-     having a.id = 'test';
-   
- 
-select *
-	from user;
+        order by c.no desc;
+        
+        select * from post;
+        
+        
+select count(title)
+	from post;
+    
+    select c.title as title, c.descr as descr
+                      from user a, blog b, category c
+                      left outer join post d
+	                    on d.category_no = c.id
+                     where b.id = a.id
+		               and c.id = b.id
+		          order by c.no desc;
+                  
+select a.name, c.no as no, c.title as title, c.descr as descr
+                      from user a, blog b, category c
+                     where b.id = a.id
+		               and c.id = b.id
+		          order by c.no desc;
+                  
+select * from category;
