@@ -6,6 +6,14 @@
 				insert into post values (null, #{title }, #{contents }, now(), #{categoryNo })
 			]]>
 	</insert>
+	
+	<select id="titleAndContents" resultType="postvo">
+				<![CDATA[
+					select no, title, contents
+					  from post
+					 where no = ${no }
+				]]>
+		</select>
 		
 
 </mapper>

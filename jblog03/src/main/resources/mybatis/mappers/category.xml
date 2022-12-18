@@ -27,7 +27,7 @@
 	]]>
 	</delete>
 	
-	<select id="findNo" parameterType="string" resultType="categoryvo">
+	<select id="findTitle" parameterType="string" resultType="categoryvo">
 		<![CDATA[
 		select	no, title, descr, id
 		   from category
@@ -41,5 +41,14 @@
 			insert into category values (null, '기본 카테고리', '기본 카테고리입니다.', #{id })
 		]]>
 	</insert>
+	
+	<select id="findNo" resultType="categoryvo">
+		<![CDATA[
+		select	no, title, descr, id
+		   from category
+		  where id = #{id }
+       group by id	
+		]]>		
+	</select>
 	
 </mapper>

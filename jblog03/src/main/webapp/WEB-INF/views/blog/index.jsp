@@ -12,7 +12,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>${blogVo2.title }</h1>
+			<h1>${getIndex.title }</h1>
 			<ul>
 				<li><a href="${pageContext.request.contextPath }/user/login">로그인</a></li>
 				<li><a href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>

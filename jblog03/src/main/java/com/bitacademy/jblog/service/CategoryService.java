@@ -30,13 +30,18 @@ public class CategoryService {
 	}
 
 	public CategoryVo findCategoryNo(String title) {
-		CategoryVo categoryVo = categoryRepository.findNo(title);
+		CategoryVo categoryVo = categoryRepository.findTitle(title);
 		return categoryVo;
 	}
 
 	public void joinCategoryInsert(CategoryVo categoryVo) {
 		categoryRepository.insertCategory(categoryVo);
 		
+	}
+	
+	public CategoryVo findCategoryFromNo(String id) {
+		CategoryVo categoryVo = categoryRepository.findNo(id);
+		return categoryVo;
 	}
 
 

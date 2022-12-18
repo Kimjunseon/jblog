@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitacademy.jblog.service.BlogService;
+import com.bitacademy.jblog.service.CategoryService;
 import com.bitacademy.jblog.service.FileUploadService;
+import com.bitacademy.jblog.service.PostService;
 import com.bitacademy.jblog.service.UserService;
 import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
@@ -33,6 +35,12 @@ public class BlogController {
 	private UserService userService;
 	
 	@Autowired
+	private PostService postService;
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
 	private FileUploadService fileuploadService;
 	
 	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}"})
@@ -45,10 +53,9 @@ public class BlogController {
 		@PathVariable("pathNo1") Optional<Long> pathNo1,
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
 		
-		
-		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
-		System.out.println(blogVo2);
-		model.addAttribute("blogVo2", blogVo2);
+		CategoryVo categoryVo = categoryService.findCategoryFromNo(id);
+		model.addAttribute("getIndex", postService.findTitleAndContents(categoryVo.getNo()));
+		System.out.println(model);
 		
 		Long categoryNo = 0L;
 		Long postNo = 0L;
