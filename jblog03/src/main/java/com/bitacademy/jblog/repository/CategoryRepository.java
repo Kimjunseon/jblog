@@ -28,8 +28,8 @@ public class CategoryRepository {
 		
 	}
 
-	public CategoryVo findNo(String title) {
-		CategoryVo vo = sqlSession.selectOne("category.findNo", title);
+	public CategoryVo findTitle(String title) {
+		CategoryVo vo = sqlSession.selectOne("category.findTitle", title);
 		return vo;
 	}
 
@@ -37,6 +37,11 @@ public class CategoryRepository {
 		int count = sqlSession.insert("category.insertCategory", categoryVo);
 		return count == 1;
 	}
-
+	
+	public CategoryVo findNo(String id) {
+		CategoryVo vo = sqlSession.selectOne("category.findNo", id);
+		return vo;
+	}
+	
 
 }

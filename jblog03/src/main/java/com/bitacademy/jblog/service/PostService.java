@@ -16,4 +16,8 @@ public class PostService {
 		
 	}
 
+	public PostVo findTitleAndContents(Long no) {
+		return postRepository.titleAndContents(no);
+	}
+
 }

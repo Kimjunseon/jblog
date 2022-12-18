@@ -16,4 +16,8 @@ public class PostRepository {
 		return count == 1;
 	}
 
+	public PostVo titleAndContents(Long no) {
+		return sqlSession.selectOne("post.titleAndContents", no);
+	}
+
 }
