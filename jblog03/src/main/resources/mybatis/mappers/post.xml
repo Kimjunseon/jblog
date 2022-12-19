@@ -11,7 +11,7 @@
 				<![CDATA[
 					select no, title, contents
 					  from post
-					 where no = ${no }
+					 where category_no = ${no }
 				]]>
 		</select>
 		

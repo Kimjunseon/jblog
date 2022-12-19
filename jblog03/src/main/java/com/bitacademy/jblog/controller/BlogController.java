@@ -18,6 +18,7 @@ import com.bitacademy.jblog.service.PostService;
 import com.bitacademy.jblog.service.UserService;
 import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
+import com.bitacademy.jblog.vo.PostVo;
 import com.bitacademy.jblog.vo.UserVo;
 
 @Controller
@@ -47,20 +48,15 @@ public class BlogController {
 	public String index(
 		BlogVo blogVo,
 		UserVo userVo,
+		PostVo postVo,
 		Model model,
 		@PathVariable("id") String id,
 		//Optional<> null값이 생성되지 않음
 		@PathVariable("pathNo1") Optional<Long> pathNo1,
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
-		
-		
-		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
-		System.out.println("bovv: " + blogVo2);
-		model.addAttribute("blogVo2", blogVo2);
-		System.out.println("mo: " + model);
-
 		CategoryVo categoryVo = categoryService.findCategoryFromNo(id);
-		model.addAttribute("getIndex", postService.findTitleAndContents(categoryVo.getNo()));
+		postVo.setNo(categoryVo.getNo());
+		model.addAttribute("getIndex", postService.findTitleAndContents(postVo));
 		System.out.println(model);
 
 		

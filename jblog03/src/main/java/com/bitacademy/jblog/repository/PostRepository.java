@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
 
 @Repository
@@ -16,8 +17,8 @@ public class PostRepository {
 		return count == 1;
 	}
 
-	public PostVo titleAndContents(Long no) {
-		return sqlSession.selectOne("post.titleAndContents", no);
+	public PostVo titleAndContents(PostVo postVo) {
+		return sqlSession.selectOne("post.titleAndContents", postVo);
 	}
 
 }

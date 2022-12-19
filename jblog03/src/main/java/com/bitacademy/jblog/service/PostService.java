@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitacademy.jblog.repository.PostRepository;
+import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
 
 @Service
@@ -16,8 +17,8 @@ public class PostService {
 		
 	}
 
-	public PostVo findTitleAndContents(Long no) {
-		return postRepository.titleAndContents(no);
+	public PostVo findTitleAndContents(PostVo postVo) {
+		return postRepository.titleAndContents(postVo);
 	}
 
 }
