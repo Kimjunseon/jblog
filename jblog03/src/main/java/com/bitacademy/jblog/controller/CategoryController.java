@@ -27,7 +27,6 @@ public class CategoryController {
 	@RequestMapping("")
 	public String categoryIndex(UserVo userVo, Model model) {
 		model.addAttribute("list", categoryService.getCategoryList(userVo.getId()));
-		System.out.println("md:" + model);
 		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
 		model.addAttribute("blogVo2", blogVo2);
 		System.out.println("vo:" +blogVo2);

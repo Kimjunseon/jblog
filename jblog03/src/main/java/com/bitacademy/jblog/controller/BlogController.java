@@ -56,6 +56,8 @@ public class BlogController {
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
 		CategoryVo categoryVo = categoryService.findCategoryFromNo(id);
 		postVo.setNo(categoryVo.getNo());
+		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
+		model.addAttribute("blogVo2", blogVo2);
 		model.addAttribute("getIndex", postService.findTitleAndContents(postVo));
 		System.out.println(model);
 
@@ -82,6 +84,19 @@ public class BlogController {
 	}
 	
 	@RequestMapping(value="/admin/update", method=RequestMethod.POST)
+	public String changeTitleAndProfile(
+			Model model,
+			BlogVo blogVo,
+			CategoryVo categoryVo,
+			@RequestParam(value="file") MultipartFile multipartFile) {
+		String url = fileuploadService.restore(multipartFile);		
+		blogVo.setProfile(url);
+		blogService.changeByTitleAndProfile(blogVo);
+		model.addAttribute("blogVo2", blogVo);
+		return "blog/index";
+	}
+	
+	@RequestMapping(value="/admin/update", method=RequestMethod.GET)
 	public String changeTitleAndProfile(
 			Model model,
 			BlogVo blogVo,

@@ -60,12 +60,13 @@ group by c.no = 1
 select count(title)
 	from post;
     
-    select c.title as title, c.descr as descr
+    select a.id, c.title as title, c.descr as descr, count(d.category_no) as postno
                       from user a, blog b, category c
                       left outer join post d
 	                    on d.category_no = c.id
                      where b.id = a.id
 		               and c.id = b.id
+					group by title
 		          order by c.no desc;
                   
 select a.name, c.no as no, c.title as title, c.descr as descr
