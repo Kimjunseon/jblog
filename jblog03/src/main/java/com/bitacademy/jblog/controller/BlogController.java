@@ -83,8 +83,9 @@ public class BlogController {
 		
 	}
 	
-	@RequestMapping(value="/admin/update", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/update", method=RequestMethod.GET)
 	public String changeTitleAndProfile(
+			@PathVariable("id") String id,
 			Model model,
 			BlogVo blogVo,
 			CategoryVo categoryVo,
@@ -93,10 +94,10 @@ public class BlogController {
 		blogVo.setProfile(url);
 		blogService.changeByTitleAndProfile(blogVo);
 		model.addAttribute("blogVo2", blogVo);
-		return "blog/index";
+		return "blog/" + id;
 	}
 	
-	@RequestMapping(value="/admin/update", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/update", method=RequestMethod.POST)
 	public String changeTitleAndProfile(
 			Model model,
 			BlogVo blogVo,
