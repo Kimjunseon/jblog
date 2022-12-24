@@ -1,6 +1,6 @@
 package com.bitacademy.jblog.controller;  
 
-import java.util.Optional;
+import java.util.Optional; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,8 +58,8 @@ public class BlogController {
 		postVo.setNo(categoryVo.getNo());
 		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
 		model.addAttribute("blogVo2", blogVo2);
+		System.out.println("blog: " + blogVo2);
 		model.addAttribute("getIndex", postService.findTitleAndContents(postVo));
-		System.out.println(model);
 
 		
 		Long categoryNo = 0L;
@@ -78,22 +78,13 @@ public class BlogController {
 	@RequestMapping(value={"/admin","/admin/basic"}, method=RequestMethod.GET)
 	public String adminBasic(@PathVariable("id") String id, UserVo userVo, Model model) {
 		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
-		System.out.println(blogVo2);
 		return "blog/admin-basic";
 		
 	}
 	
 	@RequestMapping(value="/admin/update", method=RequestMethod.GET)
 	public String changeTitleAndProfile(
-			@PathVariable("id") String id,
-			Model model,
-			BlogVo blogVo,
-			CategoryVo categoryVo,
-			@RequestParam(value="file") MultipartFile multipartFile) {
-		String url = fileuploadService.restore(multipartFile);		
-		blogVo.setProfile(url);
-		blogService.changeByTitleAndProfile(blogVo);
-		model.addAttribute("blogVo2", blogVo);
+			@PathVariable("id") String id) {
 		return "blog/" + id;
 	}
 	
@@ -103,11 +94,11 @@ public class BlogController {
 			BlogVo blogVo,
 			CategoryVo categoryVo,
 			@RequestParam(value="file") MultipartFile multipartFile) {
-		String url = fileuploadService.restore(multipartFile);		
+		String url = fileuploadService.restore(multipartFile);
 		blogVo.setProfile(url);
 		blogService.changeByTitleAndProfile(blogVo);
 		model.addAttribute("blogVo2", blogVo);
-		return "redirect:/" + categoryVo.getId();
+		return "blog/index";
 	}
 	
 }

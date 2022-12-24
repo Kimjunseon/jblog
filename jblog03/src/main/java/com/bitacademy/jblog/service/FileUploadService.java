@@ -1,6 +1,6 @@
 package com.bitacademy.jblog.service;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -14,7 +14,7 @@ import com.bitacademy.jblog.exception.FileUploadServiceException;
 @Service
 public class FileUploadService {
 	private static String RESTORE_PATH = "/mysite-uploads";
-	private static String URL_BASE = "/gallery/images";
+	private static String URL_BASE = "/images";
 	
 	
 	public String restore(MultipartFile multipartFile) throws FileUploadServiceException {
