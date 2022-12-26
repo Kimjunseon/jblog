@@ -61,7 +61,6 @@ public class BlogController {
 		System.out.println("blog: " + blogVo2);
 		model.addAttribute("getIndex", postService.findTitleAndContents(postVo));
 
-		
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
