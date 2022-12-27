@@ -39,9 +39,8 @@ public class CategoryService {
 		
 	}
 	
-	public CategoryVo findCategoryFromNo(String id) {
-		CategoryVo categoryVo = categoryRepository.findNo(id);
-		return categoryVo;
+	public List<CategoryVo> findCategoryFromNo(String id) {
+		return categoryRepository.findNo(id);
 	}
 
 

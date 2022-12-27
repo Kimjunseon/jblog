@@ -54,12 +54,11 @@ public class BlogController {
 		//Optional<> null값이 생성되지 않음
 		@PathVariable("pathNo1") Optional<Long> pathNo1,
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
-		CategoryVo categoryVo = categoryService.findCategoryFromNo(id);
-		postVo.setNo(categoryVo.getNo());
-		BlogVo blogVo2 = blogService.findBlog(userVo.getId());
+		BlogVo blogVo2 = blogService.findBlog(id);
 		model.addAttribute("blogVo2", blogVo2);
 		System.out.println("blog: " + blogVo2);
-		model.addAttribute("getIndex", postService.findTitleAndContents(postVo));
+		model.addAttribute("postTitle", categoryService.findCategoryFromNo(id));
+		System.out.println("model: " + model);
 
 		Long categoryNo = 0L;
 		Long postNo = 0L;

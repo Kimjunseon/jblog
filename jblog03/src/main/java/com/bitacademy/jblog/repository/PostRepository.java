@@ -1,5 +1,7 @@
 package com.bitacademy.jblog.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,6 +21,11 @@ public class PostRepository {
 
 	public PostVo titleAndContents(PostVo postVo) {
 		return sqlSession.selectOne("post.titleAndContents", postVo);
+	}
+
+	public List<PostVo> postList(Long no) {
+		return sqlSession.selectList("post.postList", no);
+		
 	}
 
 }

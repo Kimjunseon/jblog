@@ -14,6 +14,13 @@
 					 where category_no = ${no }
 				]]>
 		</select>
+	<select id="postList" resultType="postvo">
+			<![CDATA[
+				    select no, title, contents, reg_date as regDate
+					  from post
+				  order by no desc
+			]]>
+	</select>
 		
 
 </mapper>

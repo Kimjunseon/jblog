@@ -27,13 +27,11 @@
 						${getIndex.contents }
 					<p>
 				</div>
-				<ul class="blog-list">
-					<li><a href="${pageContext.request.contextPath }/${authUser.id }/${categoryVo.no}/${postVo.no}">Spring Camp 2016 참여기</a> <span>2015/05/02</span> </li>
-					<li><a href="">Spring Boot 사용법 정리</a> <span>2015/05/02</span>	</li>
-					<li><a href="">Spring Security 설정법</a> <span>2015/05/02</span>	</li>
-					<li><a href="">JPA + Hinernate</a> <span>2015/05/02</span>	</li>
-					<li><a href="">AOP 활용하기 - DAO 실행시간 측정하기</a> <span>2015/05/02</span>	</li>
-				</ul>
+				<c:forEach items="${postTitle }" var="vo" varStatus="status">
+					<ul class="blog-list">
+						<li><a href="">${vo.title }</a> <span>${vo.regDate }</span> </li>
+					</ul>
+				</c:forEach>
 			</div>
 		</div>
 

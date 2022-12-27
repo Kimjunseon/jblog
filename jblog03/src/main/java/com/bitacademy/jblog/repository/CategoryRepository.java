@@ -38,9 +38,8 @@ public class CategoryRepository {
 		return count == 1;
 	}
 	
-	public CategoryVo findNo(String id) {
-		CategoryVo vo = sqlSession.selectOne("category.findNo", id);
-		return vo;
+	public List<CategoryVo> findNo(String id) {
+		return sqlSession.selectList("category.findNo", id);
 	}
 	
 
