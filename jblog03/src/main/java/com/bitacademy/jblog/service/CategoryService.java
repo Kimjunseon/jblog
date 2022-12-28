@@ -43,5 +43,9 @@ public class CategoryService {
 		return categoryRepository.findNo(id);
 	}
 
+	public List<CategoryVo> findCategoryList(String id) {
+		return categoryRepository.findCategoryList(id);
+	}
+
 
 }

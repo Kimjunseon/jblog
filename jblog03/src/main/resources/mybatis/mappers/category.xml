@@ -52,4 +52,13 @@
 		]]>		
 	</select>
 	
+	<select id="findList" parameterType="string" resultType="categoryvo">
+		<![CDATA[
+		select title
+		  from category
+	     where id = #{id }
+  	  order by no	
+		]]>		
+	</select>
+	
 </mapper>

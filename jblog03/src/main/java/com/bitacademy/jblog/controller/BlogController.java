@@ -55,9 +55,10 @@ public class BlogController {
 		@PathVariable("pathNo1") Optional<Long> pathNo1,
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
 		BlogVo blogVo2 = blogService.findBlog(id);
-		model.addAttribute("blogVo2", blogVo2);
+		model.addAttribute("setBlogVo2", blogVo2);
 		System.out.println("blog: " + blogVo2);
 		model.addAttribute("postTitle", categoryService.findCategoryFromNo(id));
+		model.addAttribute("categoryList", categoryService.findCategoryList(id));
 		System.out.println("model: " + model);
 
 		Long categoryNo = 0L;

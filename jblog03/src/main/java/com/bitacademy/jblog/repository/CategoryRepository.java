@@ -41,6 +41,10 @@ public class CategoryRepository {
 	public List<CategoryVo> findNo(String id) {
 		return sqlSession.selectList("category.findNo", id);
 	}
+
+	public List<CategoryVo> findCategoryList(String id) {
+		return sqlSession.selectList("category.findList", id);
+	}
 	
 
 }
