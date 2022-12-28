@@ -26,7 +26,7 @@
 					<li><a href="${pageContext.request.contextPath }/${authUser.id }/admin/category">카테고리</a></li>
 					<li><a href="${pageContext.request.contextPath }/${authUser.id }/admin/write">글작성</a></li>
 				</ul>
-				<form action="${pageContext.request.contextPath }/${authUser.id }/admin/update" method="post" enctype="multipart/form-data">
+				<form method="post" action="${pageContext.request.contextPath }/${authUser.id }/update" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="${authUser.id }">
 	 		      	<table class="admin-config">
 			      		<tr>

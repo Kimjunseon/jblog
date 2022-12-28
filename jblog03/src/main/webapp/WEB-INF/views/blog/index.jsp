@@ -37,7 +37,7 @@
 
 		<div id="extra">
 			<div class="blog-logo">
-				<img src="${pageContext.request.contextPath }${setBlogVo2.profile }">
+				<a href="${pageContext.request.contextPath }${setBlogVo2.profile }"></a>
 			</div>
 		</div>
 

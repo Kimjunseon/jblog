@@ -81,13 +81,13 @@ public class BlogController {
 		
 	}
 	
-	@RequestMapping(value="/admin/update", method=RequestMethod.GET)
+	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String changeTitleAndProfile(
 			@PathVariable("id") String id) {
 		return "blog/" + id;
 	}
 	
-	@RequestMapping(value="/admin/update", method=RequestMethod.POST)
+	@RequestMapping(value="/update/images/{}", method=RequestMethod.POST)
 	public String changeTitleAndProfile(
 			BlogVo blogVo,
 			CategoryVo categoryVo,
