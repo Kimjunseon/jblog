@@ -37,7 +37,7 @@
 
 		<div id="extra">
 			<div class="blog-logo">
-				<a href="${pageContext.request.contextPath }${setBlogVo2.profile }"></a>
+				<a href="${pageContext.request.contextPath }/${authUser.id }${setBlogVo2.profile }"></a>
 			</div>
 		</div>
 

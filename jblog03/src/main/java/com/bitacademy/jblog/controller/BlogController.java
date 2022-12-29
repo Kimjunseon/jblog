@@ -54,12 +54,8 @@ public class BlogController {
 		//Optional<> null값이 생성되지 않음
 		@PathVariable("pathNo1") Optional<Long> pathNo1,
 		@PathVariable("pathNo2") Optional<Long> pathNo2) {
-		BlogVo blogVo2 = blogService.findBlog(id);
-		model.addAttribute("setBlogVo2", blogVo2);
-		System.out.println("blog: " + blogVo2);
 		model.addAttribute("postTitle", categoryService.findCategoryFromNo(id));
 		model.addAttribute("categoryList", categoryService.findCategoryList(id));
-		System.out.println("model: " + model);
 
 		Long categoryNo = 0L;
 		Long postNo = 0L;
@@ -81,20 +77,25 @@ public class BlogController {
 		
 	}
 	
-	@RequestMapping(value="/update", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/update", method=RequestMethod.GET)
 	public String changeTitleAndProfile(
 			@PathVariable("id") String id) {
-		return "blog/" + id;
+		return "redirect:/" + id;
 	}
 	
-	@RequestMapping(value="/update/images/{}", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/update", method=RequestMethod.POST)
 	public String changeTitleAndProfile(
+			@PathVariable("id") String id,
+			Model model,
 			BlogVo blogVo,
 			CategoryVo categoryVo,
 			@RequestParam(value="file") MultipartFile multipartFile) {
 		String url = fileuploadService.restore(multipartFile);
 		blogVo.setProfile(url);
 		blogService.changeByTitleAndProfile(blogVo);
+		BlogVo blogVo2 = blogService.findBlog(id);
+		model.addAttribute("setBlogVo2", blogVo2);
+		System.out.println("blog222: " + blogVo2);
 		return "blog/index";
 	}
 	
